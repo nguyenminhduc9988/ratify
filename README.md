@@ -8,6 +8,7 @@ Declare *what* an agent must do as a parameterizable **contract** — then enfor
 deterministic **checks** *and* fuzzy **LLM judgment**, verify runs offline, or guard them live.
 
 [![CI](https://github.com/nguyenminhduc9988/ratify/actions/workflows/ci.yml/badge.svg)](https://github.com/nguyenminhduc9988/ratify/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/ratify-agents.svg)](https://pypi.org/project/ratify-agents/)
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Ruff](https://img.shields.io/badge/lint-ruff-261230.svg)](https://github.com/astral-sh/ruff)
