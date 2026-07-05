@@ -1,0 +1,90 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ratify-agents"
+version = "0.1.0"
+description = "A unified contract layer for LLM agents — declarative, parameterizable contract templates enforced by deterministic checks and LLM judgment."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Duc Nguyen" }]
+keywords = [
+    "llm",
+    "agents",
+    "ai-agents",
+    "design-by-contract",
+    "guardrails",
+    "agent-contracts",
+    "llm-as-judge",
+    "verification",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Quality Assurance",
+    "Typing :: Typed",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "ruff>=0.4",
+    "mypy>=1.8",
+]
+schema = ["jsonschema>=4.0"]
+openai = ["openai>=1.0"]
+anthropic = ["anthropic>=0.30"]
+
+[project.urls]
+Homepage = "https://github.com/nguyenminhduc9988/ratify"
+Documentation = "https://github.com/nguyenminhduc9988/ratify/blob/main/docs/INTEGRATION.md"
+Repository = "https://github.com/nguyenminhduc9988/ratify"
+Issues = "https://github.com/nguyenminhduc9988/ratify/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ratify"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP", "B", "C4", "SIM"]
+ignore = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+files = ["src/ratify"]
+
+[[tool.mypy.overrides]]
+module = ["jsonschema.*", "openai.*", "anthropic.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v"
+
+[tool.coverage.run]
+source = ["src/ratify"]
+branch = true
+
+[tool.coverage.report]
+fail_under = 85
+show_missing = true
